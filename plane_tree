@@ -1,0 +1,28 @@
+#!/bin/bash
+
+SRC=$1
+DEST=$2
+
+plane()
+{
+    local current=$1
+
+
+    for file in $(ls $current)
+    do
+	if [ -d $current/$file ]
+	then
+	    plane $current/$file 
+	else
+	    full_dest=$DEST/$(transform $current)_$file
+	    mv $current/$file $full_dest
+	fi
+    done
+}
+
+transform()
+{
+    echo $1 | sed "s/\//_/g"
+}
+
+plane $SRC
