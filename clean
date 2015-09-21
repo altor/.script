@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for file in $(ls)
+do
+    New_file=$(echo $file | sed 'y/áàâäçéèêëîïìôöóùúüñÂÀÄÇÉÈÊËÎÏÔÖÙÜÑ/aaaaceeeeiiiooouuunAAACEEEEIIOOUUN/')
+    if [ $New_file != $file ]
+    then
+	mv $file $New_file
+    fi
+done
+
+    
