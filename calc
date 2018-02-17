@@ -1,0 +1,7 @@
+#!/bin/bash
+# inline bc
+
+# set -f : disable * evaluation
+set -f
+echo $1 | bc -l
+set +f
